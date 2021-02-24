@@ -1,0 +1,52 @@
+module.exports = {
+  parser: 'babel-eslint',
+  extends: ['airbnb', 'prettier', 'plugin:compat/recommended'],
+  env: {
+    browser: true,
+    node: true,
+    es6: true,
+    mocha: true,
+    jest: true,
+    jasmine: true,
+  },
+  globals: {
+    APP_TYPE: true,
+    page: true,
+  },
+  rules: {
+    'react/jsx-filename-extension': [1, { extensions: ['.js'] }],
+    'react/jsx-wrap-multilines': 0,
+    'react/prop-types': 0,
+    'react/forbid-prop-types': 0,
+    'react/jsx-one-expression-per-line': 0,
+    'react/jsx-first-prop-new-line': 'never',
+    'react/jsx-indent-props': [2, 'first'],
+    'react/jsx-closing-bracket-location': [1, 'after-props'],
+    'react/jsx-wrap-multilines': {
+      declaration: 'parens',
+      assignment: 'parens',
+      return: 'parens',
+      arrow: 'parens',
+      condition: 'ignore',
+      logical: 'ignore',
+      prop: 'ignore',
+    },
+    'react/jsx-max-props-per-line': [1, { maximum: 1 }],
+    'import/no-unresolved': [2, { ignore: ['^@/', '^umi/'] }],
+    'import/no-extraneous-dependencies': [
+      2,
+      {
+        optionalDependencies: true,
+        devDependencies: ['**/tests/**.js', '/mock/**/**.js', '**/**.test.js'],
+      },
+    ],
+    'jsx-a11y/no-noninteractive-element-interactions': 0,
+    'jsx-a11y/click-events-have-key-events': 0,
+    'jsx-a11y/no-static-element-interactions': 0,
+    'jsx-a11y/anchor-is-valid': 0,
+    'linebreak-style': 0,
+  },
+  settings: {
+    polyfills: ['fetch', 'promises', 'url'],
+  },
+};

@@ -15,7 +15,7 @@ var config = {
   corsOptions: {
     origin: 'http://localhost:8000',
     methods: ['GET', 'PUT', 'POST', 'OPTIONS'],
-    allowedHeaders: ['Content-Type', 'Authorization', 'csrf-token'],
+    allowedHeaders: ['Content-Type', 'Authorization', 'csrf-token', 'x-xsrf-token'],
     exposeHeaders: 'csrf-token',
     credentials: true,
     maxAge: 1728000,

@@ -9,18 +9,18 @@ const updateCloudById = function(cloud_id, docs, options, callback) {
 };
 
 /**
-   * 
-   * @param {cloud_id, name, credential, description, ssh_credential} cloud 
-   * @param {Function} callback 
+   *
+   * @param {cloud_id, name, credential, description, ssh_credential} cloud
+   * @param {Function} callback
    */
 exports.newAndSave = function(cloud, callback) {
-	const cloud = new CloudModel(cloud);
+	const ccloud = new CloudModel(cloud);
 	// cloud.cloud_id = cloud_id;
 	// cloud.name = name;
 	// cloud.credential = credential;
 	// cloud.description = description;
 	// cloud.ssh_credential = ssh_credential;
-	cloud.save(callback);
+	ccloud.save(callback);
 };
 
 exports.getClouds = function(callback) {

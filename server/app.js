@@ -1,6 +1,5 @@
 const path = require('path');
 const cors = require('cors');
-const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 const csurf = require('csurf');
 const express = require('express');
@@ -14,7 +13,6 @@ const cloudRouter = require('./routes/api/v1/cloud');
 const userRouter = require('./routes/api/v1/user');
 const dashboardRouter = require('./routes/api/v1/dashboard');
 const geographicRouter = require('./routes/api/v1/geographic');
-// const webRouter = require('./web_router');
 require('./data_proxy');
 
 const port = config.port;
@@ -23,11 +21,11 @@ const csurfOptions = config.csurfOptions;
 const staticDir = path.join(__dirname, 'dist');
 
 const app = express();
-// app.options('/api', cors(corsOptions));
-// app.use('/api', cors(corsOptions));
+app.options('/api', cors(corsOptions));
+app.use('/api', cors(corsOptions));
 app
-  .use(bodyParser.json({limit: '50mb'})) // for parsing application/json
-  .use(bodyParser.urlencoded({ limit: '50mb', extended: true })) // for parsing application/x-www-form-urlencoded
+  .use(express.json({limit: '50mb'})) // for parsing application/json
+  .use(express.urlencoded({ limit: '50mb', extended: true })) // for parsing application/x-www-form-urlencoded
   .use(cookieParser());
 
 app
@@ -46,7 +44,6 @@ app
   .use('/api/storage', storageRouter)
   .use('/api/dashboard', dashboardRouter)
   .use('/api/geographic', geographicRouter);
-// .use('/', webRouter);
 // .get('*', (req, res) => {
 //   res.sendFile(path.resolve(staticDir, 'index.html'));
 // });
